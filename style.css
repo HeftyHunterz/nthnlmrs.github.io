@@ -1,0 +1,523 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.5s, color 0.5s;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    --bg: #f4f4f9;
+    --text: #333333;
+    --accent: #0078d4;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --popover-bg: #ffffff;
+    --popover-border: #cccccc;
+}
+
+[data-theme="dark"] {
+    --bg: #1b1b1b;
+    --text: #f0f0f0;
+    --accent: #3a96dd;
+    --card-bg: rgba(30, 30, 30, 0.8);
+    --popover-bg: #333333;
+    --popover-border: #555555;
+}
+
+nav#sidebar {
+    width: 20%;
+    min-width: 10rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--popover-border);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.profile img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    border: 2px solid var(--accent);
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    margin-bottom: -1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.profile h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile .profession {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-top: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-links {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.nav-links li {
+    margin: 0.8rem 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background 0.3s, color 0.3s;
+    white-space: nowrap;
+}
+
+.nav-links a i {
+    margin-right: 0.8rem;
+    width: 1.2em;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.nav-links a span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+main#content {
+    flex-grow: 1;
+    padding: 0;
+    height: 100vh;
+    scroll-snap-type: y mandatory; /* <-- KEMBALIKAN BARIS INI */
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+main#content::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    padding: 3rem 2rem;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    border-bottom: 1px solid var(--popover-border);
+}
+section:last-child {
+    border-bottom: none;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.greetings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.popover-container {
+    position: relative;
+    display: inline-block;
+}
+
+.popover-button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.popover-button:hover {
+    background: #005fa3;
+}
+
+.popover-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--popover-bg);
+    color: var(--text);
+    border: 1px solid var(--popover-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    min-width: 200px;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.popover-content.show {
+    display: block;
+}
+
+.popover-content p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.popover-content p:last-child {
+    margin-bottom: 0;
+}
+
+.popover-content strong {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.cert-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    gap: 1rem;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
+}
+
+.cert-left { flex: 2 1 250px; text-align: left; }
+.cert-center { flex: 1 1 150px; text-align: center; }
+.cert-right { flex: 1 1 100px; text-align: right; }
+
+.cert-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.cert-card button {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.cert-card button:hover {
+    background: #005fa3;
+}
+
+.education-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.education-card {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 120, 212, 0.15);
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+}
+.card-body {
+    margin-top: 1rem;
+}
+
+.tools-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.tool-card {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 120, 212, 0.15);
+}
+
+.tool-icon-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.tool-icon-name i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-icon-name h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
+}
+
+.tool-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.message {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.7;
+    margin-top: auto;
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.theme-switcher {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+.theme-switcher:hover {
+    color: var(--accent);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        overflow: auto;
+        height: auto;
+    }
+    nav#sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--popover-border);
+        z-index: 100;
+        padding: 1rem;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+    }
+    .profile {
+        width: auto;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        padding-right: 0;
+        flex-shrink: 0;
+    }
+    .profile img { width: 3rem; height: 3rem; }
+    .profile h2 { font-size: 1.1rem; }
+    .profile .profession { font-size: 0.9rem; }
+
+    .nav-links {
+        display: flex;
+        margin-top: 0;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+        flex-grow: 1;
+        justify-content: flex-start;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+     .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links li { margin: 0 0.5rem; }
+    .nav-links a { padding: 0.5rem 0.8rem; font-size: 0.9rem; }
+    .nav-links a i { margin-right: 0.4rem; }
+
+    main#content {
+        height: auto;
+        scroll-snap-type: none;
+        overflow-y: visible;
+    }
+    section {
+        padding: 2rem 1.5rem;
+        height: auto;
+        min-height: unset;
+        scroll-snap-align: none;
+    }
+    h1 { font-size: 1.8rem; }
+
+    .cert-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .cert-left, .cert-center, .cert-right {
+        text-align: left;
+        padding: 0;
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    .cert-center { order: 1; }
+    .cert-right { order: 2; text-align: left; }
+
+    .education-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .message { display: none; }
+
+    .theme-switcher {
+        margin-left: 1rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .tools-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+     .tool-card {
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+    .tool-icon-name i {
+         font-size: 2.5rem;
+    }
+     .tool-card p {
+        font-size: 0.85rem;
+     }
+}
+
+ @media (max-width: 480px) {
+    .tool-card {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .tool-icon-name {
+         flex-direction: row;
+         align-items: center;
+         gap: 0.75rem;
+         margin-bottom: 0.75rem;
+         min-width: unset;
+         text-align: left;
+    }
+     .tool-icon-name i {
+         font-size: 2rem;
+         margin-bottom: 0;
+     }
+     .tool-icon-name h4 {
+         font-size: 0.9rem;
+     }
+}

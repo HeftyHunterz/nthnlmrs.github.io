@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Lamaris - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="sidebar">
+        <div class="profile">
+            <img src="https://placehold.co/150x150/0078d4/ffffff?text=NL" alt="Profile Picture" onerror="this.src='https://placehold.co/150x150/cccccc/ffffff?text=Error'">
+            <div class="profile-info">
+                <h2>Nathan Lamaris</h2>
+                <p class="profession">Frontend Engineer</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#greetings" class="active"><i class="fas fa-hand-sparkles"></i> <span>Greetings</span></a></li>
+            <li><a href="#about-me"><i class="fas fa-user"></i> <span>About Me</span></a></li>
+            <li><a href="#education"><i class="fas fa-graduation-cap"></i> <span>Education</span></a></li>
+            <li><a href="#certificates"><i class="fas fa-certificate"></i> <span>Certificates</span></a></li>
+            <li><a href="#tools"><i class="fas fa-tools"></i> <span>Tools</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+
+        <div class="message">
+            <strong>Made with Pure HTML, CSS, JS</strong><br><span>Copyright © 2025 Nathan. All rights reserved.</span>
+        </div>
+
+        <div class="theme-switcher" onclick="toggleTheme()" title="Toggle Theme">
+            <i class="fas fa-sun"></i> </div>
+    </nav>
+
+    <main id="content">
+        <section id="greetings">
+            <div class="greetings-header">
+                <h1>Welcome!</h1>
+                <div class="popover-container">
+                    <button class="popover-button" onclick="toggleCustomPopover(event)">Click Me</button>
+                    <div class="popover-content" id="greeting-popover">
+                        <p><strong>Important information!</strong></p>
+                        <p>1. Platform: Desktop.</p>
+                        <p>2. Recommended Resolution: 1920x1080.</p>
+                        <p>3. Mobile view under development.</p>
+                        <p>3. Contact at the end for issues.</p>
+                    </div>
+                </div>
+            </div>
+            <p>Hello! I'm Nathan Lamaris, a passionate Frontend Engineer with expertise in modern web technologies.</p>
+            <p>This portfolio showcases my skills, education, and projects. Navigate through the sections using the sidebar.</p>
+        </section>
+
+        <section id="about-me">
+            <h1>About Me</h1>
+            <p>I specialize in building responsive, accessible, and performant web applications using modern JavaScript frameworks and best practices.</p>
+            <p>With a keen eye for detail and a commitment to user experience, I strive to create web solutions that are not only functional but also aesthetically pleasing and intuitive to use.</p>
+            <p>My background in Computer Science provides a solid foundation for tackling complex challenges and continuously learning new technologies in the ever-evolving field of web development.</p>
+        </section>
+
+        <section id="education">
+            <h1>My Education</h1>
+            <div class="education-cards">
+                 <div class="education-card">
+                    <div class="card-header">
+                        <h3>Online Course: Full-Stack Development</h3>
+                        <p>Web Dev Academy</p>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Completed:</strong> 2024</p>
+                        <p><strong>Focus Areas:</strong> MERN Stack (MongoDB, Express, React, Node.js), REST APIs, Deployment</p>
+                        <p>Completed an intensive bootcamp focusing on modern full-stack development techniques and real-world application building.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h1>Certificates</h1>
+            <div class="cert-card">
+                <div class="cert-left">
+                    <h3>JavaScript Algorithms and Data Structures</h3>
+                    <p>Mastered fundamental data structures and algorithm design patterns using JavaScript, enhancing problem-solving skills.</p>
+                </div>
+                <div class="cert-center">
+                    <p><strong>Issued:</strong> 2023-05-20</p>
+                    <p><strong>Provider:</strong> CodePlatform Certs</p>
+                </div>
+                <div class="cert-right">
+                    <button onclick="showPlaceholderMessage(this)">View Certificate</button>
+                </div>
+            </div>
+            </section>
+
+        <section id="tools">
+            <h1>Languages and Tools</h1>
+            <p>I am proficient in a variety of programming languages, frameworks, and tools essential for modern web development:</p>
+
+            <div class="tools-cards">
+                <div class="tool-card">
+                    <div class="tool-icon-name">
+                        <i class="devicon-git-plain colored"></i>
+                        <h4>Git</h4>
+                    </div>
+                    <p>Experienced in version control workflows for collaborative development.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon-name">
+                        <i class="devicon-docker-plain colored"></i>
+                        <h4>Docker</h4>
+                    </div>
+                    <p>Experienced in containerization for consistent environments.</p>
+                </div>
+                 <div class="tool-card">
+                    <div class="tool-icon-name">
+                        <i class="devicon-figma-plain colored"></i>
+                        <h4>Figma</h4>
+                    </div>
+                    <p>Experienced in UI/UX design collaboration and prototyping.</p>
+                </div>
+                </div>
+        </section>
+
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!</p>
+            <p><strong>Email:</strong> <a href="mailto:nathanlamaris07@gmail.com">nathanlamaris07@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">linkedin.com/in/nathanlamaris</a></p>
+            <p>Looking forward to hearing from you!</p>
+
+            </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
